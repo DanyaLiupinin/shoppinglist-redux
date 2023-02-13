@@ -8,7 +8,7 @@ function Card(props) {
     const [obtained, setObtained] = useState(false)
 
     const dispatch = useDispatch()
-    //const cards = useSelector(state => state.reduxCards)
+    const cards = useSelector(state => state.reduxCards)
 
     function onBuy() {
         setObtained(!obtained)
@@ -23,6 +23,7 @@ function Card(props) {
                 id: 5,
               }
         })
+        console.log(cards)
     }
 
     return (

@@ -5,7 +5,29 @@ import App from './components/App/App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
-import initialState from './utils/constants';
+//import initialState from './utils/constants';
+
+const initialState = {
+  reduxCards: [
+
+    {
+      title: 'продукт1',
+      amount: '5 штук',
+      id: 1
+    },
+    {
+      title: 'продукт2',
+      amount: '7 штук',
+      id: 2,
+    },
+    {
+      title: 'продукт3',
+      amount: '8 штук',
+      id: 3,
+    },
+
+  ]
+}
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -13,15 +35,16 @@ const reducer = (state = initialState, action) => {
     case "ADD_CARD":
       return {
         ...state,
-        cards: [...state.reduxCards, action.payload]
+        reduxCards: [...state.reduxCards, action.payload]
       }
 
-    case "DELETE_CARD":
-      return {
-        ...state,
-        cash: state.cash - action.payload
-      }
-
+    /*
+  case "DELETE_CARD":
+    return {
+      ...state,
+      cash: state.cash - action.payload
+    }
+*/
     default:
       return state
   }
@@ -35,7 +58,6 @@ root.render(
     <Provider store={store}>
       <App />
     </Provider>
-
   </React.StrictMode>
 );
 

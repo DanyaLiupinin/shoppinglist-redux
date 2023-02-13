@@ -8,7 +8,7 @@ function SearchForm() {
     const [productAmount, setProductAmount] = useState('')
 
     const dispatch = useDispatch()
-    const reduxCards = useSelector(state => state.reduxCards)
+    const cards = useSelector(state => state.reduxCards)
 
     function onInputChange (e) {
 
@@ -21,24 +21,24 @@ function SearchForm() {
         }
     }
 
-
+    
     function onSubmitForm (e) {
         e.preventDefault()
         
         dispatch({
             type: "ADD_CARD", 
             payload: {
-                title: '123',
-                amount: '123',
-                id: 10,
+                title: productName,
+                amount: productAmount,
+                id: Math.random(),
               }
         })
-
-        console.log(reduxCards)
-    }
+    } 
 
     return (
-        <form className="form" name="container__form" action="#" method="post" onSubmit={onSubmitForm} >
+        <form className="form" name="container__form" action="#" method="post" 
+        onSubmit={onSubmitForm} 
+        >
             <input type="text" placeholder="Название продукта" className="form__input form__input_type_product" onChange={onInputChange} required maxLength="60" name='product' value={productName} />
             <input type="text" placeholder="Количество" className="form__input form__input_type_amount" onChange={onInputChange} required maxLength="10" name='amount' value={productAmount} />
             <button type="submit" className="form__add-button">+</button>
