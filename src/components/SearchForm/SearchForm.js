@@ -1,10 +1,14 @@
 import { useState } from 'react'
 import './SearchForm.css'
+import { useDispatch, useSelector } from 'react-redux'
 
-function SearchForm(props) {
+function SearchForm() {
 
     const [productName, setProductName] = useState('')
     const [productAmount, setProductAmount] = useState('')
+
+    const dispatch = useDispatch()
+    const reduxCards = useSelector(state => state.reduxCards)
 
     function onInputChange (e) {
 
@@ -20,7 +24,17 @@ function SearchForm(props) {
 
     function onSubmitForm (e) {
         e.preventDefault()
-        props.searchFormSubmit(productName, productAmount)
+        
+        dispatch({
+            type: "ADD_CARD", 
+            payload: {
+                title: '123',
+                amount: '123',
+                id: 10,
+              }
+        })
+
+        console.log(reduxCards)
     }
 
     return (

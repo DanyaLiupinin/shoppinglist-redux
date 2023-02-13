@@ -1,12 +1,16 @@
 import './CardContainer.css'
 import Card from '../Card/Card'
+import { useSelector } from 'react-redux'
 
-function CardContainer ({cards}) {
+function CardContainer () {
+    
+const reduxCards = useSelector(state => state.reduxCards)
+
 
     return (
         <div className='cardContainer'>
             {
-                cards.map((card) => {
+                reduxCards.map((card) => {
                     return (
                         <Card
                             key={card.id}
