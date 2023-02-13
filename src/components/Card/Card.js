@@ -1,29 +1,28 @@
 import { useState } from 'react'
 import './Card.css'
 import deleteButton from '../../images/delete.png'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
 function Card(props) {
 
     const [obtained, setObtained] = useState(false)
 
     const dispatch = useDispatch()
-    const cards = useSelector(state => state.reduxCards)
+    //const cards = useSelector(state => state.reduxCards)
 
     function onBuy() {
         setObtained(!obtained)
     }
 
-    function testim () {
+    function onDeleteCard() {
+
         dispatch({
-            type: "ADD_CARD", 
+            type: "DELETE_CARD",
             payload: {
-                title: 'продукт5',
-                amount: '10 штук',
-                id: 5,
-              }
+                id: props.id
+            }
         })
-        console.log(cards)
+
     }
 
     return (
@@ -39,7 +38,7 @@ function Card(props) {
                 ${obtained ? 'card__product-title_obtained' : ''} `}>{props.title}</h2>
                     <p className='card__product-amount'>{props.amount}</p>
                 </div>
-                <button className='card__button-delete' type='button' onClick={testim}>
+                <button className='card__button-delete' type='button' onClick={onDeleteCard}>
                     <img className='card__delete-icon' src={deleteButton} alt='удалить продукт из списка'></img>
                 </button>
             </div>

@@ -16,6 +16,7 @@ const reduxCards = useSelector(state => state.reduxCards)
                             key={card.id}
                             title={card.title}
                             amount={card.amount}
+                            id={card.id}
                         />
                     )
                 })

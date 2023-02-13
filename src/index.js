@@ -5,6 +5,7 @@ import App from './components/App/App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
+import { composeWithDevTools } from 'redux-devtools-extension';
 //import initialState from './utils/constants';
 
 const initialState = {
@@ -38,19 +39,26 @@ const reducer = (state = initialState, action) => {
         reduxCards: [...state.reduxCards, action.payload]
       }
 
-    /*
+    
   case "DELETE_CARD":
+
+    /*return {
+      ...state,
+      reduxCards: state.reduxCards.filter(({id}) => id !== action.payload.id)
+    } */
+
     return {
       ...state,
-      cash: state.cash - action.payload
+      reduxCards: state.reduxCards.filter(el => el.id !== action.payload.id)
+    
     }
-*/
+
     default:
       return state
   }
 }
 
-const store = createStore(reducer)
+const store = createStore(reducer, composeWithDevTools())
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
