@@ -1,15 +1,17 @@
 import './CardContainer.css'
-import Card from '../Card/Card'
+
 import { useSelector } from 'react-redux'
 
-function CardContainer () {
-    
-const reduxCards = useSelector(state => state.reduxCards)
+import Card from '../Card/Card'
 
+function CardContainer () {
+
+const reduxCards = useSelector(state => state.reduxCards)
 
     return (
         <div className='cardContainer'>
             {
+                reduxCards.length !== 0 ?
                 reduxCards.map((card) => {
                     return (
                         <Card
@@ -19,8 +21,11 @@ const reduxCards = useSelector(state => state.reduxCards)
                             id={card.id}
                         />
                     )
-                })
-            }
+                }) :
+                <div>
+                    <p>список пуст</p>
+                </div>
+            }            
         </div>
     )
 }

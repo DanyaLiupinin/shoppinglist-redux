@@ -1,9 +1,8 @@
 import './Main.css'
-import '../CardContainer/CardContainer'
+
 import CardContainer from '../CardContainer/CardContainer'
 import SearchForm from '../SearchForm/SearchForm'
-//import initialCards from '../../utils/constants'
-//import { useState } from 'react'
+
 
 function Main() {
 

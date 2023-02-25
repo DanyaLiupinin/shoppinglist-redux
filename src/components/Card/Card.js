@@ -1,28 +1,30 @@
-import { useState } from 'react'
 import './Card.css'
-import deleteButton from '../../images/delete.png'
+
+import { useState } from 'react'
 import { useDispatch } from 'react-redux'
+
+import deleteButton from '../../images/delete.png'
+
 
 function Card(props) {
 
     const [obtained, setObtained] = useState(false)
 
+
     const dispatch = useDispatch()
-    //const cards = useSelector(state => state.reduxCards)
+
 
     function onBuy() {
         setObtained(!obtained)
     }
 
     function onDeleteCard() {
-
         dispatch({
             type: "DELETE_CARD",
             payload: {
                 id: props.id
             }
         })
-
     }
 
     return (

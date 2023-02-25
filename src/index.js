@@ -6,59 +6,10 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension';
-//import initialState from './utils/constants';
+import cardsReducer from './reducers/cardsReduces';
 
-const initialState = {
-  reduxCards: [
 
-    {
-      title: 'продукт1',
-      amount: '5 штук',
-      id: 1
-    },
-    {
-      title: 'продукт2',
-      amount: '7 штук',
-      id: 2,
-    },
-    {
-      title: 'продукт3',
-      amount: '8 штук',
-      id: 3,
-    },
-
-  ]
-}
-
-const reducer = (state = initialState, action) => {
-  switch (action.type) {
-
-    case "ADD_CARD":
-      return {
-        ...state,
-        reduxCards: [...state.reduxCards, action.payload]
-      }
-
-    
-  case "DELETE_CARD":
-
-    /*return {
-      ...state,
-      reduxCards: state.reduxCards.filter(({id}) => id !== action.payload.id)
-    } */
-
-    return {
-      ...state,
-      reduxCards: state.reduxCards.filter(el => el.id !== action.payload.id)
-    
-    }
-
-    default:
-      return state
-  }
-}
-
-const store = createStore(reducer, composeWithDevTools())
+const store = createStore(cardsReducer, composeWithDevTools())
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
